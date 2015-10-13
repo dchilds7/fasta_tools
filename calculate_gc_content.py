@@ -21,15 +21,11 @@ with open(args.DNA, 'r') as fasta:
         if line.startswith(">"):
             # Header line, skip it
             continue
-        for base in line.strip():
-            if base == "A":
-                a_count += 1
-            elif base == "C":
-                c_count += 1
-            elif base == "G":
-                g_count += 1
-            elif base == "T":
-                t_count += 1
+        else:
+            a_count += line.count('A')
+            c_count += line.count('C')
+            g_count += line.count('G')
+            t_count += line.count('T')
 
 print("Base counts for file %s:" % args.DNA)
 print("A: %d" % a_count)
